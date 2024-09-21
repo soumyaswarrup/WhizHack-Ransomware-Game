@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoonish Animated Leaderboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #0066CC;
+            --secondary-color: #FFFFFF;
+            --accent-color: #FFD93D;
+            --text-color: #333333;
+            --background-color: #E6F2FF;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/api/placeholder/400/320');
+            background-size: cover;
+            background-repeat: repeat;
+        }
+
+        .container {
+            background-color: var(--primary-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            transform: rotate(-2deg);
+            animation: wobble 10s ease-in-out infinite;
+        }
+
+        @keyframes wobble {
+
+            0%,
+            100% {
+                transform: rotate(-2deg);
+            }
+
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: rotate(2deg);
+        }
+
+        .title {
+            font-family: 'Bangers', cursive;
+            color: var(--secondary-color);
+            margin: 0;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 var(--accent-color);
+            transform: rotate(-2deg);
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(-2deg);
+            }
+        }
+
+        #leaderboard-display {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .leaderboard-row {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px dashed var(--primary-color);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.5s ease;
+        }
+
+        .leaderboard-row:last-child {
+            border-bottom: none;
+        }
+
+        .leaderboard-row.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .rank {
+            font-family: 'Bangers', cursive;
+            font-size: 28px;
+            color: var(--primary-color);
+            width: 40px;
+            text-align: center;
+            text-shadow: 2px 2px 0 var(--accent-color);
+        }
+
+        .user-info {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        .user-name {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .user-id {
+            display: block;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .score {
+            font-family: 'Bangers', cursive;
+            font-size: 24px;
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            box-shadow: 3px 3px 0 var(--accent-color);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .leaderboard-row:hover {
+            background-color: var(--background-color);
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        .leaderboard-row:hover .rank {
+            animation: spin 0.5s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .leaderboard-row:hover .user-name {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .leaderboard-row:hover .score {
+            animation: jump 0.5s ease-in-out;
+        }
+
+        @keyframes jump {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .home-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-family: 'Comic Neue', cursive;
+            color: var(--secondary-color);
+            background-color: red;
+            /* Change this line to red */
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+
+        }
+
+        .home-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .leaderboard-row {
+                padding: 12px 15px;
+            }
+
+            .rank {
+                font-size: 24px;
+                width: 30px;
+            }
+
+            .user-name {
+                font-size: 18px;
+            }
+
+            .score {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Today's Top Players</h1>
+        </div>
+        <div id="leaderboard-display"></div>
+        <button class="home-button" onclick="window.location.href='index.html'">Go to Home Page</button>
+    </div>
+    <script>
+        import {
+            QUESTIONS,
+            XC_TOKEN,
+            USER_TABLE_ID,
+            LEADERBOARD_TABLE_ID,
+        } from "./constants.js";
+        function fetchLeaderboard() {
+            console.log("fetchLeaderboard function called");
+            try {
+                let todaysDate = new Date().toISOString().split('T')[0]
+
+                //Convert the todaysDate in format of dd-mm-yyyy
+
+                let [year, month, day] = todaysDate.split('-');
+                let formattedTodaysDate = `${day}-${month}-${year}`;
+
+                console.log("Today's date:", todaysDate);
+
+                const apiUrl = `https://app.nocodb.com/api/v2/tables/${LEADERBOARD_TABLE_ID}/records?offset=0&limit=10&where=(Date,eq,${formattedTodaysDate})&viewId=vwtanjh1wqnn2y29&sort=-Score`;
+                console.log("API URL:", apiUrl);
+
+                fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'xc-token': XC_TOKEN,
+                    }
+                }).then(response => {
+                    console.log("Response status:", response.status);
+                    console.log("Response headers:", response.headers);
+                    return response.json();
+                })
+                    .then(data => {
+                        console.log("API response data:", data);
+                        if (!data || !data.list) {
+                            console.error("Unexpected data structure:", data);
+                            document.getElementById('leaderboard-display').innerHTML = '<p>Error: Unexpected data structure</p>';
+                            return;
+                        }
+                        let leaderboardData = data.list;
+                        if (leaderboardData.length === 0) {
+                            console.log("No data returned from API");
+                            document.getElementById('leaderboard-display').innerHTML = '<h2 style="text-align: center; margin-top: auto; margin-bottom: auto;">Be the first to dive into the action today! Play now and claim your spot at the top of the leaderboard!</h2>';
+                            return;
+                        }
+                        leaderboardData.sort((a, b) => a.TimeTaken - b.TimeTaken);
+                        leaderboardData = leaderboardData.slice(0, 5);
+
+                        let leaderboardDisplay = document.getElementById('leaderboard-display');
+                        leaderboardDisplay.innerHTML = '';
+                        leaderboardData.forEach((element, index) => {
+                            console.log(`Rendering row ${index + 1}:`, element);
+                            let leaderboardRow = document.createElement('div');
+                            leaderboardRow.className = 'leaderboard-row';
+                            leaderboardRow.innerHTML = `
+                            <div class="rank">${index + 1}</div>
+                            <div class="user-info">
+                                <span class="user-name">${element.UserName || 'Anonymous'}</span>
+                                <span class="user-id">User ID: ${element.UserID}</span>
+                            </div>
+                            <div class="score">Time Taken - ${element.TimeTaken}s</div>
+                        `;
+                            leaderboardDisplay.appendChild(leaderboardRow);
+                            setTimeout(() => {
+                                leaderboardRow.classList.add('show');
+                            }, index * 100);
+                        });
+                        console.log("Leaderboard rendering complete");
+                    })
+                    .catch(error => {
+                        console.error("Fetch error:", error);
+                        document.getElementById('leaderboard-display').innerHTML = '<p>Error loading leaderboard. Please try again later.</p>';
+                    });
+            } catch (e) {
+                console.error("Error in fetchLeaderboard:", e);
+            }
+        }
+
+        window.onload = fetchLeaderboard;
+    </script>
+</body>
+
+</html>

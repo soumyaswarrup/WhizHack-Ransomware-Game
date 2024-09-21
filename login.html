@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Form</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">Login Form</div>
+            <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+                <!-- Login form -->
+                <form action="#" class="login" id="signin-form">
+                    <div class="field">
+                        <input type="text" id="signin-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="signin-password" placeholder="Password" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+                </form>
+
+                <!-- Signup form -->
+                <form action="#" class="signup" id="signup-form">
+                    <div class="field">
+                        <input type="text" id="signup-name" placeholder="Name" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="signup-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="signup-country" placeholder="Country" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="signup-social" placeholder="Social #" required>
+                    </div>
+                    <div class="field">
+                        <select id="signup-occupation" required>
+                            <option value="">Select occupation</option>
+                            <option value="student">Student</option>
+                            <option value="working-professional">Working Professional</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="signup-company" placeholder="Company/School Name" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
