@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhizHack Ransomware Simulation Certificate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .certificate-container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certificate {
+            background-color: white;
+            border: 2px solid #3f51b5;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+        }
+
+        .certificate > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            font-size: 28px;
+            color: #3f51b5;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #3f51b5;
+        }
+
+        .footer {
+            font-size: 16px;
+            color: #666;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .download {
+            background-color: #3f51b5;
+        }
+
+        .download:hover {
+            background-color: #303f9f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .linkedin {
+            background-color: #0077B5;
+        }
+
+        .linkedin:hover {
+            background-color: #005fa3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .twitter {
+            background-color: #1DA1F2;
+        }
+
+        .twitter:hover {
+            background-color: #0d95e8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-instructions, .leaderboard-note {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8eaf6;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .leaderboard-note {
+            background-color: #fff9c4;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .home-button {
+            background-color: #ff5722;
+            margin-top: 20px;
+        }
+
+        .home-button:hover {
+            background-color: #e64a19;
+        }
+
+        @media (max-width: 600px) {
+            .certificate, .share-instructions, .leaderboard-note {
+                padding: 20px;
+            }
+            .title {
+                font-size: 24px;
+            }
+            .content {
+                font-size: 16px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                padding: 15px 0;
+                font-size: 16px;
+            }
+            .share-instructions, .leaderboard-note {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="certificate" id="certificate">
+            <img src="/assets/logo-Bu2oFIXu.png" alt="WhizHack Logo" class="logo" />
+            <div class="header">Certificate of Completion</div>
+            <div class="title">Ransomware Crisis Simulation</div>
+            <div class="content">
+                This is to certify that
+                <br><br>
+                <span class="highlight" id="participantName">PARTICIPANT NAME</span>
+                <br><br>
+                has successfully completed the WhizHack Ransomware Crisis Simulation
+                <br><br>
+                achieving a score of <span class="highlight" id="score"></span>
+                <br>
+                in <span class="highlight" id="time"></span>
+            </div>
+            <div class="footer">
+                This simulation demonstrates proficiency in decision-making during a ransomware crisis, showcasing skills in incident response, crisis management, and cybersecurity strategy.
+                <br><br>
+                Date of Completion: <span id="currentDate"></span>
+            </div>
+        </div>
+        <div class="share-instructions">
+            <h3>Share Your Accomplishment!</h3>
+            <p>Download your certificate and showcase your cybersecurity skills:</p>
+            <button onclick="downloadCertificate()" class="button download">Download Certificate</button>
+            <a href="https://www.linkedin.com/sharing/share-offsite/" class="button linkedin" target="_blank">
+                Share on LinkedIn
+            </a>
+            <a href="https://twitter.com/intent/tweet" class="button twitter" target="_blank">
+                Share on Twitter
+            </a>
+        </div>
+        <div class="leaderboard-note">
+            <p>Check if you've made it to our <a href="leaderboard.html">Leaderboard</a>!</p>
+            <p>Top performers are recognized for their exceptional crisis management skills.</p>
+        </div>
+        <a href="index.html" class="button home-button">Back to Home</a>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        window.onload = function() {
+            var score = getUrlParameter('score');
+            var time = getUrlParameter('time');
+            var name = getUrlParameter('name') || "PARTICIPANT NAME";
+            
+            document.getElementById('score').textContent = score;
+            document.getElementById('participantName').textContent = name;
+            
+            var minutes = Math.floor(time / 60);
+            var seconds = time % 60;
+            var timeString = minutes + ' minutes and ' + seconds + ' seconds';
+            document.getElementById('time').textContent = timeString;
+
+            var today = new Date();
+            var dateString = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        function downloadCertificate() {
+            html2canvas(document.getElementById('certificate')).then(function(canvas) {
+                var link = document.createElement('a');
+                link.download = 'WhizHack_Ransomware_Simulation_Certificate.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>

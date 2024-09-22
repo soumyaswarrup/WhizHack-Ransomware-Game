@@ -1,1 +1,1 @@
-"# Ransomware-Game" 
+# Ransomware-Game

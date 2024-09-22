@@ -252,6 +252,7 @@
         }
 
         /* Responsive design */
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -280,6 +281,8 @@
             }
         }
     </style>
+  <script type="module" crossorigin src="/assets/leaderboard-B9s2fvyu.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/constants-BFeFKoYB.js">
 </head>
 
 <body>
@@ -289,87 +292,7 @@
         </div>
         <div id="leaderboard-display"></div>
         <button class="home-button" onclick="window.location.href='index.html'">Go to Home Page</button>
-    </div>
-    <script type="module">
-        import {
-            QUESTIONS,
-            XC_TOKEN,
-            USER_TABLE_ID,
-            LEADERBOARD_TABLE_ID,
-        } from "./constants.js";
-        function fetchLeaderboard() {
-            console.log("fetchLeaderboard function called");
-            try {
-                let todaysDate = new Date().toISOString().split('T')[0]
-
-                //Convert the todaysDate in format of dd-mm-yyyy
-
-                let [year, month, day] = todaysDate.split('-');
-                let formattedTodaysDate = `${day}-${month}-${year}`;
-
-                console.log("Today's date:", todaysDate);
-
-                const apiUrl = `https://app.nocodb.com/api/v2/tables/${LEADERBOARD_TABLE_ID}/records?offset=0&limit=10&where=(Date,eq,${formattedTodaysDate})&viewId=vwtanjh1wqnn2y29&sort=-Score`;
-                console.log("API URL:", apiUrl);
-
-                fetch(apiUrl, {
-                    method: 'GET',
-                    headers: {
-                        'xc-token': XC_TOKEN,
-                    }
-                }).then(response => {
-                    console.log("Response status:", response.status);
-                    console.log("Response headers:", response.headers);
-                    return response.json();
-                })
-                    .then(data => {
-                        console.log("API response data:", data);
-                        if (!data || !data.list) {
-                            console.error("Unexpected data structure:", data);
-                            document.getElementById('leaderboard-display').innerHTML = '<p>Error: Unexpected data structure</p>';
-                            return;
-                        }
-                        let leaderboardData = data.list;
-                        if (leaderboardData.length === 0) {
-                            console.log("No data returned from API");
-                            document.getElementById('leaderboard-display').innerHTML = '<h2 style="text-align: center; margin-top: auto; margin-bottom: auto;">Be the first to dive into the action today! Play now and claim your spot at the top of the leaderboard!</h2>';
-                            return;
-                        }
-                        leaderboardData.sort((a, b) => a.TimeTaken - b.TimeTaken);
-                        leaderboardData = leaderboardData.slice(0, 5);
-
-                        let leaderboardDisplay = document.getElementById('leaderboard-display');
-                        leaderboardDisplay.innerHTML = '';
-                        leaderboardData.forEach((element, index) => {
-                            console.log(`Rendering row ${index + 1}:`, element);
-                            let leaderboardRow = document.createElement('div');
-                            leaderboardRow.className = 'leaderboard-row';
-                            leaderboardRow.innerHTML = `
-                            <div class="rank">${index + 1}</div>
-                            <div class="user-info">
-                                <span class="user-name">${element.UserName || 'Anonymous'}</span>
-                                <span class="user-id">User ID: ${element.UserID}</span>
-                            </div>
-                            <div class="score">Time Taken - ${element.TimeTaken}s</div>
-                        `;
-                            leaderboardDisplay.appendChild(leaderboardRow);
-                            setTimeout(() => {
-                                leaderboardRow.classList.add('show');
-                            }, index * 100);
-                        });
-                        console.log("Leaderboard rendering complete");
-                    })
-                    .catch(error => {
-                        console.error("Fetch error:", error);
-                        document.getElementById('leaderboard-display').innerHTML = '<p>Error loading leaderboard. Please try again later.</p>';
-                    });
-            } catch (e) {
-                console.error("Error in fetchLeaderboard:", e);
-            }
-        }
-
-        window.onload = fetchLeaderboard;
-    </script>
+    </div>
 </body>
 
 </html>

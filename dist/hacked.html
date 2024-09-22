@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Challenge</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --background-color: #f0f4f8;
+            --text-color: #333;
+            --card-background: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .product {
+            background-color: var(--card-background);
+            border: 1px solid #ddd;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .product::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product:hover::before {
+            opacity: 1;
+        }
+
+        .product h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover .emoji {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .cta {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 40px;
+            color: var(--secondary-color);
+            padding: 20px;
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: rgba(255,255,255,0.9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .product {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Oops, it looks like the ransomware won this round!</h1>
+    
+    <p>Cybersecurity is a constant battle, but don't worry—you can always level up your defenses and come back stronger.</p>
+    
+    <p>To help you gear up for future challenges, explore these cutting-edge solutions:</p>
+    
+    <div class="product">
+        <h2><span class="emoji">🔐</span>ZeroHack S: Next-Gen APT – based Attack Simulation</h2>
+        <p>Test your defenses with real-world simulations, including ransomware and phishing attacks, to uncover vulnerabilities and strengthen your organization's resilience. <a href="https://whizhack.com/cyber-security-products/zero-hack/zerohack-s" target="_blank">Learn More</a></p>
+    </div>
+    
+    <div class="product">
+        <h2><span class="emoji">🎯</span>WhizRange: Cyber Warfare Training Platform</h2>
+        <p>Gain practical cybersecurity skills in a controlled, simulated environment. WhizRange empowers teams and individuals to counter modern threats through hands-on training. <a href="https://whizhack.com/cyber-security-products/whizrange" target="_blank">Learn More</a></p>
+    </div>
+    
+    <p class="cta">Think you can defeat the next cyber threat? Visit our <a href="https://whizhack.com/" target="_blank">product pages</a> to enhance your knowledge and <a href="index.html">return for a rematch</a>!</p>
+</body>
+</html>

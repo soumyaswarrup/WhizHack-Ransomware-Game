@@ -70,7 +70,7 @@
     <div class="container">
         <nav>
             <div class="logo">WhizHack Ransomware Simulation Challenge</div>
-            <button class="menu-button" onclick="toggleMenu()">☰</button>
+            <button id="menuButton" class="menu-button">☰</button>
             <div class="nav-links" id="navLinks">
                 <a href="https://whizhack.com/cyber-security-products/whizrange">Train your team</a>
                 <a href="/leaderboard.html">Leaderboard</a>
@@ -81,19 +81,17 @@
         <div class="main-content">
             <div class="challenge-info">
                 <h1>WhizHack Ransomware Simulation Challenge</h1>
-                <div id="endMessage">
-                    
-                </div>
+                <div id="endMessage"></div>
                 <p>Your goal is to manage a ransomware crisis affecting a major stock trading platform. Make the right
                     decisions to protect the company and its stakeholders.</p>
                 <p>Click below to start the challenge.</p>
-                <button onclick="startChallenge()" class="choice-button">Start the challenge</button>
+                <button id="startButton" class="choice-button">Start the challenge</button>
             </div>
             <div class="chat-panel">
                 <div class="chat-header">
                     <div id="scoreDisplay">Score: 0</div>
                     <div id="timeRemaining">Time: 2:00</div>
-                    <button id="resetButton" onclick="resetGame()">Reset Context</button>
+                    <button id="resetButton">Reset Context</button>
                 </div>
                 <div id="chatBox" class="chat-box">
                     <div class="message it-security">
@@ -107,41 +105,19 @@
 
         <div class="social-share">
             <p>SHARE THIS CHALLENGE WITH YOUR NETWORK</p>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://whizhack-ransomware.netlify.app/&title=WhizHack%20Ransomware%20Simulation%20Game&summary=Test%20your%20cyber%20defense%20skills%20with%20the%20WhizHack%20Ransomware%20Simulation%20Game!&source=WhizHack" target="_blank">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://whizhack-ransomware.netlify.app/&title=WhizHack%20Ransomware%20Simulation%20Game&summary=Test%20your%20cyber%20defense%20skills%20with%20the%20WhizHack%20Ransomware%20Simulation%20Game!&source=WhizHack"
+                target="_blank">
                 Share on LinkedIn
             </a>
-            <a href="https://twitter.com/intent/tweet?url=https://whizhack-ransomware.netlify.app/&text=Test%20your%20cyber%20defense%20skills%20with%20the%20WhizHack%20Ransomware%20Simulation%20Game!&hashtags=WhizHack,Cybersecurity" target="_blank">
+            <a href="https://twitter.com/intent/tweet?url=https://whizhack-ransomware.netlify.app/&text=Test%20your%20cyber%20defense%20skills%20with%20the%20WhizHack%20Ransomware%20Simulation%20Game!&hashtags=WhizHack,Cybersecurity"
+                target="_blank">
                 Share on Twitter
             </a>
         </div>
     </div>
 
-    <script src="global.js"></script>
-    <script src="ransomgame.js"></script>
-    <script src="dashboard.js"></script>
-    <script>
-    function toggleMenu() {
-        var navLinks = document.getElementById('navLinks');
-        navLinks.classList.toggle('show');
-        
-        var menuButton = document.querySelector('.menu-button');
-        var isExpanded = navLinks.classList.contains('show');
-        menuButton.setAttribute('aria-expanded', isExpanded);
-    }
-
-    function closeEndMessage() {
-        document.getElementById('endMessage').style.display = 'none';
-    }
-
-    function redirectToHackedPage() {
-        window.location.href = 'hacked.html';
-    }
-
-    // This function should be called from your game logic when the system is compromised
-    function showHackedScreen() {
-        redirectToHackedPage();
-    }
-    </script>
+    <script type="module" src="ransomgame.js"></script>
+    <script type="module" src="dashboard.js"></script>
 </body>
 
 </html>
