@@ -8,69 +8,14 @@
     <link rel="icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="ransomgame.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <style>
-        #endMessage {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border: 2px solid #28a745;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            font-family: Arial, sans-serif;
-            z-index: 1000;
-        }
-
-        #endMessage h2 {
-            color: #28a745;
-            margin-top: 0;
-        }
-
-        #endMessage p {
-            color: #333;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        #closeEndMessage {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            color: #666;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        #closeEndMessage:hover {
-            color: #333;
-        }
-
-        @media (max-width: 768px) {
-            #endMessage {
-                width: 95%;
-                padding: 15px;
-                font-size: 14px;
-            }
-
-            #endMessage h2 {
-                font-size: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body class="custom-background">
     <div class="container">
         <nav>
-            <div class="logo">WhizHack Ransomware Simulation Challenge</div>
+            <div class="logo">
+                <img src="logo.png" alt="WhizHack Logo">
+            </div>
             <button id="menuButton" class="menu-button">☰</button>
             <div class="nav-links" id="navLinks">
                 <a href="https://whizhack.com/cyber-security-products/whizrange">Train your team</a>
