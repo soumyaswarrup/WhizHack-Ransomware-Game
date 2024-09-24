@@ -9,7 +9,7 @@ import {
 // Game state variables
 let currentStage = 0;
 let score = 0;
-let timeLeft = 120;
+let timeLeft = 180;
 let countdown;
 let startTime;
 let endTime;
@@ -31,6 +31,7 @@ function startChallenge() {
 
   if (!userID) {
     alert("Please log in to play the game.");
+    window.location.href = 'login.html';
     return;
   }
 
@@ -52,7 +53,7 @@ function startChallenge() {
       } else {
         currentStage = 1;
         score = 0;
-        timeLeft = 120;
+        timeLeft = 180;
         updateScore();
         startTimer();
         nextStage();
@@ -285,13 +286,13 @@ async function endGame(success) {
 function resetGame() {
   currentStage = 0;
   score = 0;
-  timeLeft = 120;
+  timeLeft = 180;
   updateScore();
   clearInterval(countdown);
-  timeRemainingElement.innerText = "Time: 2:00";
+  timeRemainingElement.innerText = "Time: 3:00";
   timeRemainingElement.style.color = "";
   chatBox.innerHTML =
-    '<div class="message it-security"><div class="message-content">Welcome to the AI Security Challenge. Click \'Start the challenge\' to begin.</div></div>';
+    '<div class="message it-security"><div class="message-content">Welcome to the Ransomware Simulation Challenge. Click \'Start the challenge\' to begin.</div></div>';
   choicesElement.innerHTML = "";
   hackedScreenElement.style.display = "none";
   failedMessageElement.style.display = "none";
@@ -315,6 +316,12 @@ function redirectToHackedPage() {
   window.location.href = "hacked.html";
 }
 
+function showAlertAndRedirect() {
+  alert(
+    "This is a simulation for educational purposes only. In a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement."
+  );
+}
+
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   document
@@ -330,10 +337,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Disclaimer alert
-  alert(
-    "This is a simulation for educational purposes only. In a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement."
-  );
+  // Show alert and redirect when the page loads
+  showAlertAndRedirect();
 
   // Initialize the game
   resetGame();
