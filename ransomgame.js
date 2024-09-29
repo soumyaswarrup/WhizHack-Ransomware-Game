@@ -17,6 +17,8 @@ let takenMinutes;
 let takenSeconds;
 
 // DOM elements
+let container = document.getElementsByClassName("container")[0];
+const chatPanel = document.getElementsByClassName("chat-panel")[0];
 const chatBox = document.getElementById("chatBox");
 const choicesElement = document.getElementById("choices");
 const scoreDisplay = document.getElementById("scoreDisplay");
@@ -31,9 +33,12 @@ function startChallenge() {
 
   if (!userID) {
     alert("Please log in to play the game.");
-    window.location.href = 'login.html';
+    window.location.href = "login.html";
     return;
   }
+
+  //Add a style property to id = disclaimer to hide it
+  document.getElementById("disclaimer").style.display = "none";
 
   let todaysDate = new Date().toISOString().split("T")[0];
   let [year, month, day] = todaysDate.split("-");
@@ -110,7 +115,7 @@ function typeMessage(element, text, speed = 30, callback) {
 }
 
 function scrollToBottom() {
-  chatBox.scrollTop = chatBox.scrollHeight;
+  chatBox.scrollTop = container.scrollHeight;
 }
 
 function makeChoice(choice) {
@@ -291,9 +296,21 @@ function resetGame() {
   clearInterval(countdown);
   timeRemainingElement.innerText = "Time: 3:00";
   timeRemainingElement.style.color = "";
-  chatBox.innerHTML =
-    '<div class="message it-security"><div class="message-content">Welcome to the Ransomware Simulation Challenge. Click \'Start the challenge\' to begin.</div></div>';
-  choicesElement.innerHTML = "";
+  chatBox.innerHTML = `
+    <div class="message it-security">
+        <div class="message-content">
+            <strong>Welcome to the Ransomware Simulation Challenge!</strong><br><br>
+          <div id="disclaimer">  Get ready to test your skills in a high-stakes scenario-based Q&A game.<br/>  Here's how it works:<br>
+            • <strong>Duration:</strong> You have 3 minutes to complete the challenge.<br>
+            • <strong>Gameplay:</strong> Respond to each question in the chatbot interface.<br>
+            • <strong>Correct Answer:</strong> If you select the correct answer, you will automatically proceed to the next question.<br>
+            • <strong>Incorrect Answer:</strong> Choosing an incorrect answer will deduct 10 seconds from your remaining time, but you'll get another chance to pick the right answer.<br>
+            • <strong>Objective:</strong> Solve all questions correctly within the allotted time to get your name on the leaderboard.<br><br>
+            Press <strong>Start</strong> to begin your challenge. Good luck! </div>
+        </div>
+    </div>
+`;
+
   hackedScreenElement.style.display = "none";
   failedMessageElement.style.display = "none";
   scrollToBottom();
