@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Challenge</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Better Luck Next Time</title>
+    <link rel="icon" href="/favicon.ico"/>
     <style>
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
-            --background-color: #f0f4f8;
-            --text-color: #333;
-            --card-background: #ffffff;
+            --background-color: #17202a;
+            --text-color: #ffffff;
+            --card-background: #2c3e50; /* Changed to requested color */
         }
 
         body {
@@ -48,7 +48,7 @@
         }
 
         .product {
-            background-color: var(--card-background);
+            background-color: var(--card-background); /* Box color changed */
             border: 1px solid #ddd;
             padding: 25px;
             margin-bottom: 30px;
@@ -151,6 +151,14 @@
             transform: translateY(-3px);
         }
 
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -161,14 +169,23 @@
             .product {
                 padding: 15px;
             }
+            iframe {
+                height: 400px;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Oops, it looks like the ransomware won this round!</h1>
     
-    <p>Cybersecurity is a constant battle, but don't worry—you can always level up your defenses and come back stronger.</p>
+    <p>Cybersecurity is a constant battle, but don't worry—you can always strengthen your defenses and come back stronger. Scroll down to play once again.</p>
     
+    <!-- Adding a local image after the scroll down message -->
+    <img src="/assets/bg%20stats-C7A3kfbB.png" alt="Cybersecurity Battle" style="display: block; margin: 20px auto; max-width: 100%; height: auto;" />
+
+    <!-- Embed form with iframe first -->
+    <iframe src="https://forms.office.com/r/PARLWGYWuK" title="Feedback Form"></iframe>
+
     <p>To help you gear up for future challenges, explore these cutting-edge solutions:</p>
     
     <div class="product">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhizHack Ransomware Simulation Certificate</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -29,6 +29,24 @@
             align-items: center;
         }
 
+        .header-demo {
+            background-color: #3f51b5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .scroll-down {
+            font-size: 18px;
+            color: #3f51b5;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
         .certificate {
             background-color: white;
             border: 2px solid #3f51b5;
@@ -36,13 +54,13 @@
             padding: 40px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            background-image: url('/api/placeholder/800/600');
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
+            margin-top: 40px; /* Gap between the certificate and the form */
         }
 
         .certificate::before {
@@ -98,6 +116,8 @@
         .logo {
             max-width: 150px;
             margin-bottom: 20px;
+            width: 100%;
+            height: auto;
         }
 
         .button {
@@ -169,12 +189,24 @@
             background-color: #e64a19;
         }
 
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 0;
+            margin-top: 40px;
+            margin-bottom: 40px; /* Added gap between form and certificate */
+        }
+
         @media (max-width: 600px) {
             .certificate, .share-instructions, .leaderboard-note {
-                padding: 20px;
+                padding: 15px;
+            }
+            .header-demo {
+                font-size: 18px;
+                padding: 15px;
             }
             .title {
-                font-size: 24px;
+                font-size: 28px;
             }
             .content {
                 font-size: 16px;
@@ -189,32 +221,60 @@
             .share-instructions, .leaderboard-note {
                 margin-top: 20px;
             }
+            iframe {
+                height: 400px;
+            }
+            .logo {
+                max-width: 120px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="certificate-container">
+
+        <!-- Header for Free Demo of ZeroHack - S Product -->
+        <div class="header-demo">
+           Fill out the form to get a Free Demo of Next Gen APT-based Attack Simulation (ZeroHack - S) Product!
+        </div>
+
+        <!-- Scroll down Instruction -->
+        <div class="scroll-down">
+            Scroll down to download your Ransomware Simulation Challenge Certificate.
+        </div>
+
+        <!-- New content added after scroll down message -->
+        <div class="new-content">
+            <p style="text-align: center; font-size: 18px; color: #333;">Thank you for participating in the WhizHack Ransomware Simulation Challenge!</p>
+            <img src="/assets/bg%20stats-C7A3kfbB.png" alt="Cybersecurity Battle" style="display: block; margin: 20px auto; max-width: 100%; height: auto;" />
+
+        </div>
+
+        <!-- Microsoft Form Embed -->
+        <iframe src="https://forms.office.com/r/MtufVL8EvA" frameborder="0"></iframe>
+
         <div class="certificate" id="certificate">
-            <img src="/assets/logo-Bu2oFIXu.png" alt="WhizHack Logo" class="logo" />
+            <img src="/assets/logo-D4NOcqx6.png" alt="WhizHack Logo" class="logo" />
             <div class="header">Certificate of Completion</div>
-            <div class="title">Ransomware Crisis Simulation</div>
+            <div class="title">Ransomware Simulation Challenge</div>
             <div class="content">
                 This is to certify that
                 <br><br>
                 <span class="highlight" id="participantName">PARTICIPANT NAME</span>
                 <br><br>
-                has successfully completed the WhizHack Ransomware Crisis Simulation
+                has successfully completed the WhizHack Ransomware Simulation Challenge
                 <br><br>
                 achieving a score of <span class="highlight" id="score"></span>
                 <br>
                 in <span class="highlight" id="time"></span>
             </div>
             <div class="footer">
-                This simulation demonstrates proficiency in decision-making during a ransomware crisis, showcasing skills in incident response, crisis management, and cybersecurity strategy.
+                This simulation demonstrates proficiency in decision-making during a ransomware challenge, showcasing skills in incident response, crisis management, and cybersecurity strategy.
                 <br><br>
                 Date of Completion: <span id="currentDate"></span>
             </div>
         </div>
+
         <div class="share-instructions">
             <h3>Share Your Accomplishment!</h3>
             <p>Download your certificate and showcase your cybersecurity skills:</p>
@@ -226,10 +286,12 @@
                 Share on Twitter
             </a>
         </div>
+
         <div class="leaderboard-note">
             <p>Check if you've made it to our <a href="leaderboard.html">Leaderboard</a>!</p>
             <p>Top performers are recognized for their exceptional crisis management skills.</p>
         </div>
+
         <a href="index.html" class="button home-button">Back to Home</a>
     </div>
 

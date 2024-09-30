@@ -49,7 +49,6 @@ $(document).ready(function () {
       let email = $("#signup-email").val();
       let name = $("#signup-name").val();
       let password = $("#signup-password").val();
-      let country = $("#signup-country").val();
       let social = $("#signup-social").val();
       let profession = $("#signup-occupation").val();
       let company = $("#signup-company").val();
@@ -89,7 +88,6 @@ $(document).ready(function () {
                 Name: name,
                 Email: email,
                 Password: password,
-                Country: country,
                 SocialLink: social,
                 Profession: profession,
                 Company: company,
