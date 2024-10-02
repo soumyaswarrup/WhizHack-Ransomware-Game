@@ -11,7 +11,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f0f0;
+            background-color: #00182c;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,7 +21,7 @@
             box-sizing: border-box;
         }
         .certificate-container {
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -36,28 +36,81 @@
             margin-bottom: 30px;
             font-size: 22px;
             font-weight: bold;
+            width: 100%;
         }
         .scroll-down {
             font-size: 18px;
             color: #3f51b5;
             margin-bottom: 30px;
             text-align: center;
+            width: 100%;
         }
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .content-wrapper .image, .content-wrapper .form {
+            width: 48%;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 500px;
+            border-radius: 10px;
+        }
+        .content-wrapper .image {
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Desktop View */
+        @media (min-width: 769px) {
+            .content-wrapper .image {
+                background-image: url('bg stats.png');
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .content-wrapper .image {
+                background-image: url('bg stats mob.png');
+                height: 500px;
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
         .certificate {
             background-color: white;
             border: 2px solid #3f51b5;
             border-radius: 10px;
-            padding: 40px;
+            padding: 20px;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
-            width: 100%;
+            width: 100%; /* Mobile width */
+            max-width: 400px; /* Mobile max width */
             box-sizing: border-box;
-            margin-top: 40px; /* Gap between the certificate and the form */
+            margin-top: 20px;
         }
+        
+        @media (min-width: 769px) {
+            .certificate {
+                width: 90%; /* Desktop view width */
+                max-width: 800px; /* Desktop max width */
+            }
+        }
+        
         .certificate::before {
             content: '';
             position: absolute;
@@ -73,21 +126,21 @@
             z-index: 2;
         }
         .header {
-            font-size: 28px;
+            font-size: 24px;
             color: #3f51b5;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         .title {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: bold;
             margin: 20px 0;
             color: #333;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .content {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -96,13 +149,13 @@
             color: #3f51b5;
         }
         .footer {
-            font-size: 16px;
+            font-size: 14px;
             color: #666;
-            margin-top: 40px;
+            margin-top: 20px;
             font-style: italic;
         }
         .logo {
-            max-width: 150px;
+            max-width: 100px;
             margin-bottom: 20px;
             width: 100%;
             height: auto;
@@ -152,11 +205,17 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             width: 100%;
             box-sizing: border-box;
+            text-align: center;
         }
         .leaderboard-note {
             background-color: #fff9c4;
             font-size: 16px;
             text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         .home-button {
             background-color: #ff5722;
@@ -165,42 +224,27 @@
         .home-button:hover {
             background-color: #e64a19;
         }
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: 0;
-            margin-top: 40px;
-            margin-bottom: 40px; /* Added gap between form and certificate */
-        }
-        @media (max-width: 600px) {
-            .certificate, .share-instructions, .leaderboard-note {
-                padding: 15px;
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
             }
-            .header-demo {
-                font-size: 18px;
-                padding: 15px;
-            }
-            .title {
-                font-size: 28px;
-            }
-            .content {
-                font-size: 16px;
-            }
-            .button {
-                display: block;
+            .content-wrapper .image, .content-wrapper .form {
                 width: 100%;
-                margin: 10px 0;
-                padding: 15px 0;
-                font-size: 16px;
+                padding: 10px 0;
             }
-            .share-instructions, .leaderboard-note {
-                margin-top: 20px;
+            
+            .button {
+                width: 100%; /* Make all buttons the same width */
+                max-width: 300px; /* Set a max-width for buttons */
+                padding: 12px; /* Consistent padding for all buttons */
+                font-size: 16px; /* Ensure font size is the same */
+                box-sizing: border-box;
             }
-            iframe {
-                height: 400px;
-            }
-            .logo {
-                max-width: 120px;
+
+            .button.linkedin, .button.twitter, .button.download {
+                display: block;
+                margin: 10px auto; /* Center buttons */
             }
         }
     </style>
@@ -210,24 +254,23 @@
 
         <!-- Header for Free Demo of ZeroHack - S Product -->
         <div class="header-demo">
-           Fill out the form to get a Free Demo of Next Gen APT-based Attack Simulation (ZeroHack - S) Product!
+            <p>Fill out the form to get a Free Demo of Next Gen APT-based Attack Simulation (ZeroHack - S) Product!</p>
+            <p>Scroll down to download your Ransomware Simulation Challenge Certificate.</p>
         </div>
 
-        <!-- Scroll down Instruction -->
-        <div class="scroll-down">
-            Scroll down to download your Ransomware Simulation Challenge Certificate.
+        <!-- Content wrapper with image on the left and form on the right -->
+        <div class="content-wrapper">
+            <div class="image">
+                <!-- Background image applied via CSS for better control -->
+            </div>
+
+            <div class="form">
+                <!-- Microsoft Form Embed -->
+                <iframe src="https://forms.office.com/r/MtufVL8EvA" frameborder="0"></iframe>
+            </div>
         </div>
 
-        <!-- New content added after scroll down message -->
-        <div class="new-content">
-            <p style="text-align: center; font-size: 18px; color: #333;">Thank you for participating in the WhizHack Ransomware Simulation Challenge!</p>
-            <img src="bg stats.png" alt="Cybersecurity Battle" style="display: block; margin: 20px auto; max-width: 100%; height: auto;" />
-
-        </div>
-
-        <!-- Microsoft Form Embed -->
-        <iframe src="https://forms.office.com/r/MtufVL8EvA" frameborder="0"></iframe>
-
+        <!-- Certificate Section -->
         <div class="certificate" id="certificate">
             <img src="logo.png" alt="WhizHack Logo" class="logo" />
             <div class="header">Certificate of Completion</div>
@@ -253,13 +296,15 @@
         <div class="share-instructions">
             <h3>Share Your Accomplishment!</h3>
             <p>Download your certificate and showcase your cybersecurity skills:</p>
-            <button onclick="downloadCertificate()" class="button download">Download Certificate</button>
-            <a href="https://www.linkedin.com/sharing/share-offsite/" class="button linkedin" target="_blank">
-                Share on LinkedIn
-            </a>
-            <a href="https://twitter.com/intent/tweet" class="button twitter" target="_blank">
-                Share on Twitter
-            </a>
+            <div class="button-container">
+                <button onclick="downloadCertificate()" class="button download">Download Certificate</button>
+                <a href="https://www.linkedin.com/sharing/share-offsite/" class="button linkedin" target="_blank">
+                    Share on LinkedIn
+                </a>
+                <a href="https://twitter.com/intent/tweet" class="button twitter" target="_blank">
+                    Share on Twitter
+                </a>
+            </div>
         </div>
 
         <div class="leaderboard-note">
@@ -297,13 +342,27 @@
         }
 
         function downloadCertificate() {
-            html2canvas(document.getElementById('certificate')).then(function(canvas) {
+            // Temporarily change the certificate to desktop size before downloading
+            var certificate = document.getElementById('certificate');
+            var originalWidth = certificate.style.width;
+            var originalMaxWidth = certificate.style.maxWidth;
+
+            // Set to desktop view size for download
+            certificate.style.width = '90%';
+            certificate.style.maxWidth = '800px';
+
+            // Capture the certificate and download
+            html2canvas(certificate).then(function(canvas) {
                 var link = document.createElement('a');
                 link.download = 'WhizHack_Ransomware_Simulation_Certificate.png';
                 link.href = canvas.toDataURL();
                 link.click();
+
+                // Revert to the original size
+                certificate.style.width = originalWidth;
+                certificate.style.maxWidth = originalMaxWidth;
             });
-        }
+        }   
     </script>
 </body>
 </html>

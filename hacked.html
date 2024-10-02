@@ -3,52 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Better Luck Next Time</title>
+    <title>WhizHack Ransomware Simulation</title>
     <link rel="icon" href="/favicon.ico"/>
     <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --background-color: #17202a;
-            --text-color: #ffffff;
-            --card-background: #2c3e50; /* Changed to requested color */
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 800px;
-            margin: 0 auto;
+            font-family: 'Roboto', sans-serif;
+            background-color: #00182c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
-            background-color: var(--background-color);
-            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+            color: white;
         }
-
-        h1 {
-            color: var(--accent-color);
+        .certificate-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-demo {
+            background-color: #3f51b5;
+            color: white;
+            padding: 20px;
             text-align: center;
-            font-size: 2.5em;
+            border-radius: 10px;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-            padding-bottom: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            width: 100%;
+        }
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .content-wrapper .image, .content-wrapper .form {
+            width: 48%;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 500px;
+            border-radius: 10px;
+        }
+        .content-wrapper .image {
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
+        /* Desktop View */
+        @media (min-width: 769px) {
+            .content-wrapper .image {
+                background-image: url('bg stats.png');
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .content-wrapper .image {
+                background-image: url('bg stats mob.png');
+                height: 500px;
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
         }
 
         .product {
-            background-color: var(--card-background); /* Box color changed */
+            background-color: #2c3e50;
             border: 1px solid #ddd;
             padding: 25px;
             margin-bottom: 30px;
@@ -64,61 +97,12 @@
             box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
 
-        .product::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .product:hover::before {
-            opacity: 1;
-        }
-
         .product h2 {
-            color: var(--primary-color);
+            color: #3498db;
             margin-top: 0;
             font-size: 1.5em;
             display: flex;
             align-items: center;
-        }
-
-        p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary-color);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--secondary-color);
-        }
-
-        a:hover::after {
-            transform: scaleX(1);
         }
 
         .emoji {
@@ -132,72 +116,131 @@
             transform: scale(1.2) rotate(15deg);
         }
 
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3498db;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        a:hover, a:focus, a:active {
+            color: #e74c3c;
+        }
+
+        a:hover::after, a:focus::after, a:active::after {
+            transform: scaleX(1);
+        }
+
         .cta {
             text-align: center;
             font-size: 1.3em;
             font-weight: bold;
             margin-top: 40px;
-            color: var(--secondary-color);
             padding: 20px;
-            background-color: rgba(255,255,255,0.7);
+            background-color: rgba(255,255,255,0.1);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
         .cta:hover {
-            background-color: rgba(255,255,255,0.9);
+            background-color: rgba(255,255,255,0.2);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            transform: translateY(-3px);
         }
 
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            margin-top: 20px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        .scroll-down {
+            text-align: center;
+            font-size: 18px;
+            color: #3498db;
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
             }
-            h1 {
-                font-size: 2em;
+            40% {
+                transform: translateY(-10px);
             }
-            .product {
-                padding: 15px;
+            60% {
+                transform: translateY(-5px);
             }
-            iframe {
-                height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            .content-wrapper .image, .content-wrapper .form {
+                width: 100%;
+                padding: 10px 0;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Oops, it looks like the ransomware won this round!</h1>
-    
-    <p>Cybersecurity is a constant battle, but don't worry—you can always strengthen your defenses and come back stronger. Scroll down to play once again.</p>
-    
-    <!-- Adding a local image after the scroll down message -->
-    <img src="bg stats.png" alt="Cybersecurity Battle" style="display: block; margin: 20px auto; max-width: 100%; height: auto;" />
+    <div class="certificate-container">
+        <h1 style="color: #e74c3c; text-align: center; font-size: 2.5em; margin-bottom: 30px;">
+            Oops, it looks like the ransomware won this round!
+        </h1>
 
-    <!-- Embed form with iframe first -->
-    <iframe src="https://forms.office.com/r/PARLWGYWuK" title="Feedback Form"></iframe>
+        <p style="text-align: center; margin-bottom: 20px;">
+            Cybersecurity is a constant battle, but don't worry—you can always strengthen your defenses and come back stronger.
+        </p>
 
-    <p>To help you gear up for future challenges, explore these cutting-edge solutions:</p>
-    
-    <div class="product">
-        <h2><span class="emoji">🔐</span>ZeroHack S: Next-Gen APT – based Attack Simulation</h2>
-        <p>Test your defenses with real-world simulations, including ransomware and phishing attacks, to uncover vulnerabilities and strengthen your organization's resilience. <a href="https://whizhack.com/cyber-security-products/zero-hack/zerohack-s" target="_blank">Learn More</a></p>
+        <div class="scroll-down">
+            Scroll down to play once again
+        </div>
+
+        <!-- Header for Free Demo of ZeroHack - S Product -->
+        <div class="header-demo">
+            <p>Fill out the form to get a Free Demo of Next Gen APT-based Attack Simulation (ZeroHack - S) Product!</p>
+        </div>
+
+        <!-- Content wrapper with image on the left and form on the right -->
+        <div class="content-wrapper">
+            <div class="image">
+                <!-- Background image applied via CSS for better control -->
+            </div>
+
+            <div class="form">
+                <!-- Microsoft Form Embed -->
+                <iframe src="https://forms.office.com/r/PARLWGYWuK" title="Feedback Form" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+            To help you gear up for future challenges, explore these cutting-edge solutions:
+        </p>
+
+        <div class="product">
+            <h2><span class="emoji">🔐</span>ZeroHack S: Next-Gen APT – based Attack Simulation</h2>
+            <p>Test your defenses with real-world simulations, including ransomware and phishing attacks, to uncover vulnerabilities and strengthen your organization's resilience. <a href="https://whizhack.com/cyber-security-products/zero-hack/zerohack-s" target="_blank">Learn More</a></p>
+        </div>
+        
+        <div class="product">
+            <h2><span class="emoji">🎯</span>WhizRange: Cyber Warfare Training Platform</h2>
+            <p>Gain practical cybersecurity skills in a controlled, simulated environment. WhizRange empowers teams and individuals to counter modern threats through hands-on training. <a href="https://whizhack.com/cyber-security-products/whizrange" target="_blank">Learn More</a></p>
+        </div>
+
+        <div class="cta">
+            Think you can defeat the next cyber threat? Visit our <a href="https://whizhack.com/" target="_blank">product pages</a> to enhance your knowledge and <a href="index.html">return for a rematch</a>!
+        </div>
     </div>
-    
-    <div class="product">
-        <h2><span class="emoji">🎯</span>WhizRange: Cyber Warfare Training Platform</h2>
-        <p>Gain practical cybersecurity skills in a controlled, simulated environment. WhizRange empowers teams and individuals to counter modern threats through hands-on training. <a href="https://whizhack.com/cyber-security-products/whizrange" target="_blank">Learn More</a></p>
-    </div>
-    
-    <p class="cta">Think you can defeat the next cyber threat? Visit our <a href="https://whizhack.com/" target="_blank">product pages</a> to enhance your knowledge and <a href="index.html">return for a rematch</a>!</p>
 </body>
 </html>

@@ -37,7 +37,7 @@ function startChallenge() {
     return;
   }
 
-  //Add a style property to id = disclaimer to hide it
+  // Add a style property to id = disclaimer to hide it
   document.getElementById("disclaimer").style.display = "none";
 
   let todaysDate = new Date().toISOString().split("T")[0];
@@ -115,7 +115,10 @@ function typeMessage(element, text, speed = 30, callback) {
 }
 
 function scrollToBottom() {
-  chatBox.scrollTop = container.scrollHeight;
+  // Check if chatBox has enough height to scroll
+  if (chatBox.scrollHeight > chatBox.clientHeight) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
 }
 
 function makeChoice(choice) {
