@@ -298,6 +298,7 @@
             USER_TABLE_ID,
             LEADERBOARD_TABLE_ID,
         } from "./constants.js";
+
         function fetchLeaderboard() {
             console.log("fetchLeaderboard function called");
             try {
@@ -336,7 +337,12 @@
                             document.getElementById('leaderboard-display').innerHTML = '<h2 style="text-align: center; margin-top: auto; margin-bottom: auto;">Be the first to dive into the action today! Play now and claim your spot at the top of the leaderboard!</h2>';
                             return;
                         }
-                        leaderboardData.sort((a, b) => a.TimeTaken - b.TimeTaken);
+                        leaderboardData.sort((a, b) => {
+                            if (b.Score === a.Score) {
+                                return a.TimeTaken - b.TimeTaken;
+                            }
+                            return b.Score - a.Score;
+                        });
                         leaderboardData = leaderboardData.slice(0, 5);
 
                         let leaderboardDisplay = document.getElementById('leaderboard-display');
@@ -351,7 +357,7 @@
                                 <span class="user-name">${element.UserName || 'Anonymous'}</span>
                                 <span class="user-id">User ID: ${element.UserID}</span>
                             </div>
-                            <div class="score">Time Taken - ${element.TimeTaken}s</div>
+                            <div class="score">Score: ${element.Score || 'N/A'} | Time Taken: ${element.TimeTaken || 'N/A'}s</div>
                         `;
                             leaderboardDisplay.appendChild(leaderboardRow);
                             setTimeout(() => {

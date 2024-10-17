@@ -135,11 +135,13 @@ function makeChoice(choice) {
   let feedbackText = "";
 
   if (isCorrect) {
-    score += 10;
+    score += 10; // Add points for correct answer
     updateScore();
     feedbackText = "Correct! Good decision.";
   } else {
-    timeLeft -= 10;
+    timeLeft -= 10; // Deduct time for incorrect answer
+    score = Math.max(0, score - 5); // Prevent score from going negative
+    updateScore();
     feedbackText = "Incorrect. This approach may lead to complications.";
   }
 
@@ -307,7 +309,7 @@ function resetGame() {
             • <strong>Duration:</strong> You have 3 minutes to complete the challenge.<br>
             • <strong>Gameplay:</strong> Respond to each question in the chatbot interface.<br>
             • <strong>Correct Answer:</strong> If you select the correct answer, you will automatically proceed to the next question.<br>
-            • <strong>Incorrect Answer:</strong> Choosing an incorrect answer will deduct 10 seconds from your remaining time, but you'll get another chance to pick the right answer.<br>
+            • <strong>Incorrect Answer:</strong> Choosing an incorrect answer will deduct 10 seconds from your remaining time and 5 points from your score, but you'll get another chance to pick the right answer.<br>
             • <strong>Objective:</strong> Solve all questions correctly within the allotted time to get your name on the leaderboard.<br><br>
             Press <strong>Start</strong> to begin your challenge. Good luck! </div>
         </div>
