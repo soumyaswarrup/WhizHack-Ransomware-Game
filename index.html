@@ -8,6 +8,23 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="ransomgame.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .footer a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body class="custom-background">
@@ -42,11 +59,8 @@
                     <div class="message it-security">
                         <div class="message-content">Welcome to the Ransomware Resilience Challenge. Click 'Start the
                             challenge' to begin.
-
-
                         </div>
                     </div>
-
                 </div>
                 <div id="choices" class="choices"></div>
             </div>
@@ -64,6 +78,11 @@
             </a>
         </div>
 
+        <div class="footer">
+            <a href="tandc.html" target="_blank">Terms & Conditions</a> |
+            <a href="privacy.html" target="_blank">Privacy Policy</a>
+        </div>
+    </div>
 
     <script type="module" src="ransomgame.js"></script>
     <script type="module" src="dashboard.js"></script>
