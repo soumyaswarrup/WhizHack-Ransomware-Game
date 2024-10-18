@@ -304,7 +304,7 @@ function resetGame() {
   chatBox.innerHTML = `
     <div class="message it-security">
         <div class="message-content">
-            <strong>Welcome to the Ransomware Simulation Challenge!</strong><br><br>
+            <strong>Welcome to the Ransomware Resilience Challenge!</strong><br><br>
           <div id="disclaimer">  Get ready to test your skills in a high-stakes scenario-based Q&A game.<br/>  Here's how it works:<br>
             • <strong>Duration:</strong> You have 3 minutes to complete the challenge.<br>
             • <strong>Gameplay:</strong> Respond to each question in the chatbot interface.<br>
@@ -340,7 +340,7 @@ function redirectToHackedPage() {
 
 function showAlertAndRedirect() {
   alert(
-    "This is a simulation for educational purposes only. In a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement."
+    "This is a resilience for educational purposes only. In a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement."
   );
 }
 
