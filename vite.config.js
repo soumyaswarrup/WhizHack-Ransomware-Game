@@ -10,7 +10,7 @@ export default defineConfig({
         leaderboard: resolve(__dirname, "leaderboard.html"),
         login: resolve(__dirname, "login.html"),
         cong: resolve(__dirname, "cong.html"),
-        privacy: resolve(__dirname, "privacypolicy.html"),
+        privacy: resolve(__dirname, "privacy.html"),
         terms: resolve(__dirname, "termsandcondition.html"),
       },
     },
