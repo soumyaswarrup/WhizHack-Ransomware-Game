@@ -24,6 +24,86 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            width: 500px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+            z-index: 1000;
+            border-radius: 15px; /* Rounded corners */
+            border: 2px solid #007bff; /* Adding a border */
+            transition: all 0.3s ease-in-out; /* Smooth transition for open/close */
+        }
+
+        .popup-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 20px; /* Slightly larger header */
+            color: #007bff; /* Color to match the button */
+        }
+
+        .popup p, .popup ul {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333; /* Slightly darker text */
+            line-height: 1.5; /* Better readability */
+        }
+
+        .popup button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease; /* Smooth color transition */
+        }
+
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            transition: all 0.3s ease-in-out; /* Smooth fade-in and fade-out */
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media only screen and (max-width: 768px) {
+            .popup {
+                width: 90%;
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .popup p, .popup ul {
+                font-size: 14px;
+            }
+
+            .popup button {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .popup-header {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -52,7 +132,7 @@
             <div class="chat-panel">
                 <div class="chat-header">
                     <div id="scoreDisplay">Score: 0</div>
-                    <div id="timeRemaining">Time: 2:00</div>
+                    <div id="timeRemaining">Time: 3:00</div>
                     <button id="resetButton">Reset Challenge</button>
                 </div>
                 <div id="chatBox" class="chat-box">
@@ -64,6 +144,24 @@
                 </div>
                 <div id="choices" class="choices"></div>
             </div>
+        </div>
+
+        <!-- Popup and Overlay -->
+        <div class="popup-overlay"></div>
+        <div class="popup" id="welcomePopup">
+            <div class="popup-header">Welcome to the Ransomware Resilience Challenge!</div>
+            <p>Get ready to test your skills in a high-stakes scenario-based Q&A game.</p>
+            <p>Here's how it works:</p>
+            <ul>
+                <li><strong>Duration:</strong> You have 3 minutes to complete the challenge.</li>
+                <li><strong>Gameplay:</strong> Respond to each question in the chatbot interface.</li>
+                <li><strong>Correct Answer:</strong> If you select the correct answer, you will automatically proceed to the next question.</li>
+                <li><strong>Incorrect Answer:</strong> Choosing an incorrect answer will deduct 10 seconds from your remaining time and 5 points from your score, but you'll get another chance to pick the right answer.</li>
+                <li><strong>Objective:</strong> Solve all questions correctly within the allotted time to get your name on the leaderboard.</li>
+                <li><strong>Sign-Up Requirement:</strong> To get a score, earn a certificate, and appear on the leaderboard, you must sign up or log in to your account.</li>
+            </ul>
+            <p>Press Start to begin your challenge. Good luck!</p>
+            <button id="closePopup">Start the Challenge</button>
         </div>
 
         <div class="social-share">
@@ -86,6 +184,18 @@
 
     <script type="module" src="./ransomgame.js"></script>
     <script type="module" src="./dashboard.js"></script>
+    <script>
+        // Popup logic
+        $(document).ready(function () {
+            // Show popup when the page is loaded
+            $(".popup-overlay, #welcomePopup").fadeIn();
+
+            // Close popup when button is clicked
+            $("#closePopup").click(function () {
+                $(".popup-overlay, #welcomePopup").fadeOut();
+            });
+        });
+    </script>
 </body>
 
 </html>

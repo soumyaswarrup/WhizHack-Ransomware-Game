@@ -287,7 +287,7 @@ async function endGame(success) {
       userNameLoggedIn
     )}&score=${score}&time=${takenSeconds}`;
   } else {
-    failedMessageElement.innerHTML = `Game Over: The attack caused irreparable damage.<br><br>Your final score is ${score}.<br><br>Remember, in a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement.`;
+    failedMessageElement.innerHTML = `Game Over: The attack caused irreparable damage.<br><br>Your final score is ${score}.`;
     failedMessageElement.style.display = "block";
   }
   scrollToBottom();
@@ -338,12 +338,6 @@ function redirectToHackedPage() {
   window.location.href = "hacked.html";
 }
 
-function showAlertAndRedirect() {
-  alert(
-    "This is a resilience for educational purposes only. In a real ransomware situation, never pay the ransom and immediately contact cybersecurity professionals and law enforcement."
-  );
-}
-
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   document
@@ -358,9 +352,6 @@ document.addEventListener("DOMContentLoaded", () => {
       makeChoice(choice);
     }
   });
-
-  // Show alert and redirect when the page loads
-  showAlertAndRedirect();
 
   // Initialize the game
   resetGame();
