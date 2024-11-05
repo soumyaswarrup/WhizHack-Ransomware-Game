@@ -35,25 +35,32 @@
             background-color: white;
             padding: 20px;
             width: 500px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+            max-width: 90%;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            border-radius: 15px; /* Rounded corners */
-            border: 2px solid #007bff; /* Adding a border */
-            transition: all 0.3s ease-in-out; /* Smooth transition for open/close */
+            border-radius: 15px;
+            border: 2px solid #007bff;
+            transition: all 0.3s ease-in-out;
+            overflow-y: auto;
         }
 
         .popup-header {
             font-weight: bold;
             margin-bottom: 10px;
-            font-size: 20px; /* Slightly larger header */
-            color: #007bff; /* Color to match the button */
+            font-size: 20px;
+            color: #007bff;
+            text-align: center;
         }
 
         .popup p, .popup ul {
             margin: 10px 0;
             font-size: 16px;
-            color: #333; /* Slightly darker text */
-            line-height: 1.5; /* Better readability */
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .popup .red-text {
+            color: red;
         }
 
         .popup button {
@@ -63,7 +70,10 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease; /* Smooth color transition */
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
         }
 
         .popup button:hover {
@@ -79,10 +89,10 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
             display: none;
-            transition: all 0.3s ease-in-out; /* Smooth fade-in and fade-out */
+            transition: all 0.3s ease-in-out;
         }
 
-        /* Media Queries for Mobile Responsiveness */
+        /* Mobile-friendly adjustments */
         @media only screen and (max-width: 768px) {
             .popup {
                 width: 90%;
@@ -91,12 +101,6 @@
             }
 
             .popup p, .popup ul {
-                font-size: 14px;
-            }
-
-            .popup button {
-                width: 100%;
-                padding: 10px;
                 font-size: 14px;
             }
 
@@ -160,7 +164,7 @@
                 <li><strong>Objective:</strong> Solve all questions correctly within the allotted time to get your name on the leaderboard.</li>
                 <li><strong>Sign-Up Requirement:</strong> To get a score, earn a certificate, and appear on the leaderboard, you must sign up or log in to your account.</li>
             </ul>
-            <p>Press Start to begin your challenge. Good luck!</p>
+            <p class="red-text">If you have already registered and provided your email, simply click outside the popup to start playing the game.</p>
             <button id="closePopup">Start the Challenge</button>
         </div>
 
@@ -190,9 +194,14 @@
             // Show popup when the page is loaded
             $(".popup-overlay, #welcomePopup").fadeIn();
 
-            // Close popup when button is clicked
-            $("#closePopup").click(function () {
+            // Close popup when clicking outside of it
+            $(".popup-overlay").click(function () {
                 $(".popup-overlay, #welcomePopup").fadeOut();
+            });
+
+            // Redirect to login page when Start Challenge button is clicked
+            $("#closePopup").click(function () {
+                window.location.href = "./login.html";
             });
         });
     </script>

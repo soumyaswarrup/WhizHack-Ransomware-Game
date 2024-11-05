@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Signup Form</title>
-    <link rel="icon" href="/favicon.ico"/>
+    <title>Play the Game</title>
+    <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -13,57 +13,21 @@
 <body>
     <div class="wrapper">
         <div class="title-text">
-            <div class="title login">Login Form</div>
-            <div class="title signup">Signup Form</div>
+            <div class="title">Play the Game</div>
         </div>
         <div class="form-container">
-            <div class="slide-controls">
-                <input type="radio" name="slide" id="login" checked>
-                <input type="radio" name="slide" id="signup">
-                <label for="login" class="slide login">Login</label>
-                <label for="signup" class="slide signup">Signup</label>
-                <div class="slider-tab"></div>
-            </div>
             <div class="form-inner">
-                <!-- Login form -->
-                <form action="#" class="login" id="signin-form">
+                <!-- Play the Game form -->
+                <form action="#" class="play-game" id="play-game-form">
                     <div class="field">
-                        <input type="text" id="signin-email" placeholder="Email Address" required>
+                        <input type="text" id="name" placeholder="Name" required>
                     </div>
                     <div class="field">
-                        <input type="password" id="signin-password" placeholder="Password" required>
+                        <input type="text" id="work-email" placeholder="Enter Work Email Address" required>
                     </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input type="submit" value="Login">
-                    </div>
-                    <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
-                </form>
-
-                <!-- Signup form -->
-                <form action="#" class="signup" id="signup-form">
-                    <div class="field">
-                        <input type="text" id="signup-name" placeholder="Name" required>
-                    </div>
-                    <div class="field">
-                        <input type="text" id="signup-email" placeholder="Email Address" required>
-                    </div>
-                    <div class="field">
-                        <input type="password" id="signup-password" placeholder="Password" required>
-                    </div>
-                    <div class="field">
-                        <select id="signup-occupation" required>
-                            <option value="">Select occupation</option>
-                            <option value="student">Student</option>
-                            <option value="working-professional">Working Professional</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <input type="text" id="signup-company" placeholder="Company/College Name" required>
-                    </div>
-                    <div class="field btn">
-                        <div class="btn-layer"></div>
-                        <input type="submit" value="Signup">
+                        <input type="submit" value="Play the Game">
                     </div>
                 </form>
             </div>
