@@ -52,7 +52,8 @@
             text-align: center;
         }
 
-        .popup p, .popup ul {
+        .popup p,
+        .popup ul {
             margin: 10px 0;
             font-size: 16px;
             color: #333;
@@ -92,6 +93,23 @@
             transition: all 0.3s ease-in-out;
         }
 
+        /* Close Button Styling */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #007bff;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff0000;
+            transform: scale(1.2);
+        }
+
         /* Mobile-friendly adjustments */
         @media only screen and (max-width: 768px) {
             .popup {
@@ -100,12 +118,17 @@
                 font-size: 14px;
             }
 
-            .popup p, .popup ul {
+            .popup p,
+            .popup ul {
                 font-size: 14px;
             }
 
             .popup-header {
                 font-size: 18px;
+            }
+
+            .close-btn {
+                font-size: 25px;
             }
         }
     </style>
@@ -153,6 +176,7 @@
         <!-- Popup and Overlay -->
         <div class="popup-overlay"></div>
         <div class="popup" id="welcomePopup">
+            <span class="close-btn" id="closePopupBtn">&times;</span>
             <div class="popup-header">Welcome to the Ransomware Resilience Challenge!</div>
             <p>Get ready to test your skills in a high-stakes scenario-based Q&A game.</p>
             <p>Here's how it works:</p>
@@ -189,13 +213,17 @@
     <script type="module" src="./ransomgame.js"></script>
     <script type="module" src="./dashboard.js"></script>
     <script>
-        // Popup logic
         $(document).ready(function () {
             // Show popup when the page is loaded
             $(".popup-overlay, #welcomePopup").fadeIn();
 
             // Close popup when clicking outside of it
             $(".popup-overlay").click(function () {
+                $(".popup-overlay, #welcomePopup").fadeOut();
+            });
+
+            // Close popup when clicking the close button
+            $("#closePopupBtn").click(function () {
                 $(".popup-overlay, #welcomePopup").fadeOut();
             });
 
